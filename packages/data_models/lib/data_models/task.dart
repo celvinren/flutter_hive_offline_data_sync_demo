@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter_hive_offline_data_sync_demo/data_models/helper.dart/hive_adapter.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import 'helper.dart/hive_adapter.dart';
 
 part 'task.freezed.dart';
 part 'task.g.dart';

@@ -3,6 +3,7 @@
 /// More dartdocs go here.
 library;
 
-export 'src/flutter_hive_offline_data_sync_demo_base.dart';
+export 'data_models/helper.dart/hive_adapter.dart';
+export 'data_models/task.dart';
 
 // TODO: Export any libraries intended for clients of this package.

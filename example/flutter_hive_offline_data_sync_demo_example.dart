@@ -1,7 +1,6 @@
 import 'dart:io';
 
-import 'package:flutter_hive_offline_data_sync_demo/data_models/helper.dart/hive_adapter.dart';
-import 'package:flutter_hive_offline_data_sync_demo/data_models/task.dart';
+import 'package:data_models/data_models.dart';
 import 'package:hive/hive.dart';
 
 // import 'package:uuid/uuid.dart';
@@ -15,9 +14,18 @@ void main(List<String> arguments) async {
     adapter: TaskAdapter(),
   );
   // await taskBox.clear();
+
   // final Task task = Task(
-  //   id: const Uuid().v4(),
-  //   title: 'Task 1',
+  //   id: '087ded28-d920-4f2c-8d5c-10af3a4f7c1a',
+  //   title: 'Task 2',
+  //   description: 'Description 1',
+  //   isCompleted: false,
+  //   dateTime: DateTime.now(),
+  // );
+  // taskBox.put(task.id, task);
+  // final Task task = Task(
+  //   id: '2f70c452-f10f-4809-9ca0-5a60460b9605',
+  //   title: 'Task 2',
   //   description: 'Description 1',
   //   isCompleted: false,
   //   dateTime: DateTime.now(),
@@ -34,14 +42,14 @@ void main(List<String> arguments) async {
       print('++++++++++++ Sync data fail handle dirty data ++++++++++++');
     }
     print(previous == current);
-    print('previous');
+    print('------------ previous ------------');
     previous?.printProperties();
-    print('current');
+    print('------------ current ------------');
     current?.printProperties();
   });
   // taskBox.removeListener();
 
-  final task = taskBox.get('1ccd646e-8536-40c5-845a-765942f11c13');
+  final task = taskBox.get('087ded28-d920-4f2c-8d5c-10af3a4f7c1a');
   final newTask = task?.copyWith(
     title: 'Task 1101',
     description: 'Description 110',
@@ -51,9 +59,9 @@ void main(List<String> arguments) async {
   if (newTask == null) return;
   taskBox.put(newTask.id, newTask);
 
-  // taskBox.delete('1ccd646e-8536-40c5-845a-765942f11c13');
+  // taskBox.delete('087ded28-d920-4f2c-8d5c-10af3a4f7c1a');
 
-  final task2 = taskBox.get('d9b948da-c626-4439-b2d3-97157b1dc8f7');
+  final task2 = taskBox.get('2f70c452-f10f-4809-9ca0-5a60460b9605');
   final newTask2 = task2?.copyWith(
     title: 'Task 22',
     description: 'Description 22',
