@@ -36,12 +36,18 @@ enum LocalBox {
 class TypeSafeBox<K, T extends Equatable> {
   TypeSafeBox._(this.baseBox);
 
+  static TypeSafeBox? _instance;
+
   static Future<TypeSafeBox<K, T>> init<K, T extends Equatable>({
     required String boxName,
     required TypeAdapter<T> adapter,
   }) async {
+    if (_instance != null) {
+      return _instance as TypeSafeBox<K, T>;
+    }
     Hive.registerAdapter<T>(adapter);
-    return TypeSafeBox<K, T>._(await Hive.openBox<T>(boxName));
+    _instance = TypeSafeBox<K, T>._(await Hive.openBox<T>(boxName));
+    return _instance as TypeSafeBox<K, T>;
   }
 
   final Box<T> baseBox;
