@@ -1,16 +1,27 @@
 import 'package:data_models/data_models.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_hive_offline_data_sync_demo/flutter_hive_offline_data_sync_demo.dart';
+import 'package:rxdart/rxdart.dart';
 
 class RemoteTaskRepository implements RemoteRepository<String, Task> {
   final Dio _dio = Dio();
-  @override
-  bool isConnected = true;
+  final isConnectedStreamController = BehaviorSubject<bool>.seeded(
+    true,
+  );
+  Stream<bool> getIsConnectedStream() =>
+      isConnectedStreamController.asBroadcastStream();
 
   static const baseUrl = 'http://localhost:8080';
+
+  void setIsConnected({bool isConnected = true}) {
+    isConnectedStreamController.add(isConnected);
+  }
+
   @override
   Future<Task> create(Task data) async {
-    if (isConnected == false) {
+    final isConnected = await getIsConnectedStream().first;
+    print(isConnected);
+    if (isConnected != true) {
       throw Exception('No internet connection');
     }
 
@@ -30,7 +41,9 @@ class RemoteTaskRepository implements RemoteRepository<String, Task> {
 
   @override
   Future<Task> fetchById(String id) async {
-    if (isConnected == false) {
+    final isConnected = await getIsConnectedStream().first;
+    print(isConnected);
+    if (isConnected != true) {
       throw Exception('No internet connection');
     }
 

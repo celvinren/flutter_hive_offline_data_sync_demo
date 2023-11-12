@@ -1,6 +1,4 @@
 abstract class RemoteRepository<K, T> {
-  bool isConnected = true;
-
   Future<T> fetchById(K id);
 
   Future<T> create(T data);

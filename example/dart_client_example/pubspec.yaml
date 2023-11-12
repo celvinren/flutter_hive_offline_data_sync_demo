@@ -13,6 +13,7 @@ dependencies:
   flutter_hive_offline_data_sync_demo:
     path: ../..
   hive: ^2.2.3
+  rxdart: ^0.27.7
   uuid: ^4.2.1
 
 dev_dependencies:

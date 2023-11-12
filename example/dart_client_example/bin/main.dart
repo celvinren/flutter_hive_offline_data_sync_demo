@@ -75,7 +75,9 @@ class MenuAction {
   late Repository<String, Task> taskRepository;
 
   void setRemoteRepositoryConnectivity({bool isConnected = true}) {
-    taskRepository.remoteRepository.isConnected = isConnected;
+    (taskRepository.remoteRepository as RemoteTaskRepository).setIsConnected(
+      isConnected: isConnected,
+    );
   }
 
   List<Task> getAllTasks() {
