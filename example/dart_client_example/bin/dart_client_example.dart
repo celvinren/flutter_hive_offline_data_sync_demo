@@ -24,7 +24,7 @@ void main(List<String> arguments) async {
 
   // final Task task = Task(
   //   id: '087ded28-d920-4f2c-8d5c-10af3a4f7c1a',
-  //   title: 'Task 2',
+  //   title: 'Task 1',
   //   description: 'Description 1',
   //   isCompleted: false,
   //   dateTime: DateTime.now(),
@@ -32,28 +32,31 @@ void main(List<String> arguments) async {
   // taskRepository.create(task.id, task);
   // final Task task2 = Task(
   //   id: '2f70c452-f10f-4809-9ca0-5a60460b9605',
-  //   title: 'Task 2',
-  //   description: 'Description 1',
+  //   title: 'Task 5',
+  //   description: 'Description 5',
   //   isCompleted: false,
   //   dateTime: DateTime.now(),
   // );
   // taskRepository.create(task2.id, task2);
 
+  // final getSingleTask = taskRepository.fetchById('087ded28-d920-4f2c-8d5c-10af3a4f7c1a');
+
   for (var element in taskRepository.getAllValues()) {
     element.printProperties();
   }
-  taskRepository.localRepository.listen<Task>((previous, current) {
-    try {
-      print('++++++++++++ Sync data with server here ++++++++++++');
-    } catch (e) {
-      print('++++++++++++ Sync data fail handle dirty data ++++++++++++');
-    }
-    print(previous == current);
-    print('------------ previous ------------');
-    previous?.printProperties();
-    print('------------ current ------------');
-    current?.printProperties();
-  });
+  // taskRepository.localRepository.listen<Task>((previous, current) {
+  //   try {
+  //     print('++++++++++++ Sync data with server here ++++++++++++');
+  //   } catch (e) {
+  //     print('++++++++++++ Sync data fail handle dirty data ++++++++++++');
+  //   }
+  //   print(previous == current);
+  //   print('------------ previous ------------');
+  //   previous?.printProperties();
+  //   print('------------ current ------------');
+  //   current?.printProperties();
+  // });
+
   // taskRepository.localRepository.removeListener();
 
   // final task =

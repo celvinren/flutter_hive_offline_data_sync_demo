@@ -9,9 +9,11 @@ environment:
 dependencies:
   data_models:
     path: ../../packages/data_models
+  dio: ^5.3.3
   flutter_hive_offline_data_sync_demo:
     path: ../..
   hive: ^2.2.3
+  uuid: ^4.2.1
 
 dev_dependencies:
   lints: ^2.0.0
