@@ -1,13 +1,9 @@
 import 'dart:io';
 
+import 'package:dart_client_example/remote_task_repository.dart';
 import 'package:data_models/data_models.dart';
-import 'package:flutter_hive_offline_data_sync_demo/src/local_repository.dart';
-import 'package:flutter_hive_offline_data_sync_demo/src/repository.dart';
+import 'package:flutter_hive_offline_data_sync_demo/flutter_hive_offline_data_sync_demo.dart';
 import 'package:hive/hive.dart';
-
-import 'remote_task_repository.dart';
-
-// import 'package:uuid/uuid.dart';
 
 void main(List<String> arguments) async {
   var path = Directory.current.path;
@@ -24,17 +20,7 @@ void main(List<String> arguments) async {
     remoteRepository: remoteTaskRepository,
   );
 
-  // final repository = await Repository.init<String, Task>(
-  //   boxName: LocalBox.task.name,
-  //   adapter: TaskAdapter(),
-  //   remoteRepository: remoteTaskRepository,
-  // );
-
-  // final taskBox = await TypeSafeBox.init<String, Task>(
-  //   boxName: LocalBox.task.name,
-  //   adapter: TaskAdapter(),
-  // );
-  // await taskBox.clear();
+  // await localTaskRepository.clear();
 
   // final Task task = Task(
   //   id: '087ded28-d920-4f2c-8d5c-10af3a4f7c1a',
@@ -43,15 +29,15 @@ void main(List<String> arguments) async {
   //   isCompleted: false,
   //   dateTime: DateTime.now(),
   // );
-  // taskBox.put(task.id, task);
-  // final Task task = Task(
+  // taskRepository.create(task.id, task);
+  // final Task task2 = Task(
   //   id: '2f70c452-f10f-4809-9ca0-5a60460b9605',
   //   title: 'Task 2',
   //   description: 'Description 1',
   //   isCompleted: false,
-  //   dateTime: DateTimetaskBox.now(),
+  //   dateTime: DateTime.now(),
   // );
-  // taskBox.put(task.id, task);
+  // taskRepository.create(task2.id, task2);
 
   for (var element in taskRepository.getAllValues()) {
     element.printProperties();
@@ -68,9 +54,10 @@ void main(List<String> arguments) async {
     print('------------ current ------------');
     current?.printProperties();
   });
-  // taskBox.removeListener();
+  // taskRepository.localRepository.removeListener();
 
-  // final task = taskBox.get('087ded28-d920-4f2c-8d5c-10af3a4f7c1a');
+  // final task =
+  //     taskRepository.getValueById('087ded28-d920-4f2c-8d5c-10af3a4f7c1a');
   // final newTask = task?.copyWith(
   //   title: 'Task 1101',
   //   description: 'Description 110',
@@ -78,11 +65,12 @@ void main(List<String> arguments) async {
   //   dateTime: DateTime.now(),
   // );
   // if (newTask == null) return;
-  // taskBox.put(newTask.id, newTask);
+  // taskRepository.update(newTask.id, newTask);
 
-  // taskBox.delete('087ded28-d920-4f2c-8d5c-10af3a4f7c1a');
+  // taskRepository.deleteById('087ded28-d920-4f2c-8d5c-10af3a4f7c1a');
 
-  // final task2 = taskBox.get('2f70c452-f10f-4809-9ca0-5a60460b9605');
+  // final task2 =
+  //     taskRepository.getValueById('2f70c452-f10f-4809-9ca0-5a60460b9605');
   // final newTask2 = task2?.copyWith(
   //   title: 'Task 22',
   //   description: 'Description 22',
@@ -90,7 +78,8 @@ void main(List<String> arguments) async {
   //   dateTime: DateTime.now(),
   // );
   // if (newTask2 == null) return;
-  // taskBox.put(newTask2.id, newTask2);
+  // taskRepository.update(newTask2.id, newTask2);
 
-  // taskBox.putAll({newTask.id: newTask, newTask2.id: newTask2});
+  // taskRepository.localRepository
+  //     .createOrUpdateAll({newTask.id: newTask, newTask2.id: newTask2});
 }

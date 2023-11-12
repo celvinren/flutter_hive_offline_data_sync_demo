@@ -1,5 +1,5 @@
 import 'package:data_models/data_models.dart';
-import 'package:flutter_hive_offline_data_sync_demo/src/remote_repository.dart';
+import 'package:flutter_hive_offline_data_sync_demo/flutter_hive_offline_data_sync_demo.dart';
 
 class RemoteTaskRepository implements RemoteRepository<String, Task> {
   @override
