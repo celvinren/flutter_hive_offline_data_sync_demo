@@ -11,7 +11,8 @@ mixin PrintProperties {
   String? get title;
   String? get description;
   bool? get isCompleted;
-  DateTime? get dateTime;
+  DateTime? get completedAt;
+  DateTime? get modifiedAt;
 
   void printProperties() {
     print('=======================================');
@@ -19,7 +20,8 @@ mixin PrintProperties {
     print('title: $title');
     print('description: $description');
     print('isCompleted: $isCompleted');
-    print('dateTime: $dateTime');
+    print('completedAt: $completedAt');
+    print('modifiedAt: $modifiedAt');
   }
 }
 
@@ -32,7 +34,8 @@ class Task extends Equatable with _$Task, PrintProperties {
     String? title,
     String? description,
     bool? isCompleted,
-    DateTime? dateTime,
+    DateTime? completedAt,
+    DateTime? modifiedAt,
   }) = _Task;
 
   factory Task.fromJson(Map<String, dynamic> json) => _$TaskFromJson(json);

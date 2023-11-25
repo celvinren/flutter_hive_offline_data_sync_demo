@@ -24,7 +24,8 @@ mixin _$Task {
   String? get title => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   bool? get isCompleted => throw _privateConstructorUsedError;
-  DateTime? get dateTime => throw _privateConstructorUsedError;
+  DateTime? get completedAt => throw _privateConstructorUsedError;
+  DateTime? get modifiedAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,7 +42,8 @@ abstract class $TaskCopyWith<$Res> {
       String? title,
       String? description,
       bool? isCompleted,
-      DateTime? dateTime});
+      DateTime? completedAt,
+      DateTime? modifiedAt});
 }
 
 /// @nodoc
@@ -61,7 +63,8 @@ class _$TaskCopyWithImpl<$Res, $Val extends Task>
     Object? title = freezed,
     Object? description = freezed,
     Object? isCompleted = freezed,
-    Object? dateTime = freezed,
+    Object? completedAt = freezed,
+    Object? modifiedAt = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -80,9 +83,13 @@ class _$TaskCopyWithImpl<$Res, $Val extends Task>
           ? _value.isCompleted
           : isCompleted // ignore: cast_nullable_to_non_nullable
               as bool?,
-      dateTime: freezed == dateTime
-          ? _value.dateTime
-          : dateTime // ignore: cast_nullable_to_non_nullable
+      completedAt: freezed == completedAt
+          ? _value.completedAt
+          : completedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      modifiedAt: freezed == modifiedAt
+          ? _value.modifiedAt
+          : modifiedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
     ) as $Val);
   }
@@ -100,7 +107,8 @@ abstract class _$$TaskImplCopyWith<$Res> implements $TaskCopyWith<$Res> {
       String? title,
       String? description,
       bool? isCompleted,
-      DateTime? dateTime});
+      DateTime? completedAt,
+      DateTime? modifiedAt});
 }
 
 /// @nodoc
@@ -117,7 +125,8 @@ class __$$TaskImplCopyWithImpl<$Res>
     Object? title = freezed,
     Object? description = freezed,
     Object? isCompleted = freezed,
-    Object? dateTime = freezed,
+    Object? completedAt = freezed,
+    Object? modifiedAt = freezed,
   }) {
     return _then(_$TaskImpl(
       id: null == id
@@ -136,9 +145,13 @@ class __$$TaskImplCopyWithImpl<$Res>
           ? _value.isCompleted
           : isCompleted // ignore: cast_nullable_to_non_nullable
               as bool?,
-      dateTime: freezed == dateTime
-          ? _value.dateTime
-          : dateTime // ignore: cast_nullable_to_non_nullable
+      completedAt: freezed == completedAt
+          ? _value.completedAt
+          : completedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      modifiedAt: freezed == modifiedAt
+          ? _value.modifiedAt
+          : modifiedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
     ));
   }
@@ -152,7 +165,8 @@ class _$TaskImpl extends _Task {
       this.title,
       this.description,
       this.isCompleted,
-      this.dateTime})
+      this.completedAt,
+      this.modifiedAt})
       : super._();
 
   factory _$TaskImpl.fromJson(Map<String, dynamic> json) =>
@@ -167,7 +181,9 @@ class _$TaskImpl extends _Task {
   @override
   final bool? isCompleted;
   @override
-  final DateTime? dateTime;
+  final DateTime? completedAt;
+  @override
+  final DateTime? modifiedAt;
 
   @JsonKey(ignore: true)
   @override
@@ -189,7 +205,8 @@ abstract class _Task extends Task {
       final String? title,
       final String? description,
       final bool? isCompleted,
-      final DateTime? dateTime}) = _$TaskImpl;
+      final DateTime? completedAt,
+      final DateTime? modifiedAt}) = _$TaskImpl;
   _Task._() : super._();
 
   factory _Task.fromJson(Map<String, dynamic> json) = _$TaskImpl.fromJson;
@@ -203,7 +220,9 @@ abstract class _Task extends Task {
   @override
   bool? get isCompleted;
   @override
-  DateTime? get dateTime;
+  DateTime? get completedAt;
+  @override
+  DateTime? get modifiedAt;
   @override
   @JsonKey(ignore: true)
   _$$TaskImplCopyWith<_$TaskImpl> get copyWith =>
