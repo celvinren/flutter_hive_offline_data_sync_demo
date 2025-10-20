@@ -10,19 +10,22 @@
             "type": "dart",
         },
         {
-            "name": "flutter_hive_offline_data_sync_demo",
-            "request": "launch",
-            "type": "dart"
-        },
-        {
-            "name": "backend_excample",
-            "cwd": "example/backend_excample",
+            "name": "backend_example",
+            "cwd": "example/backend_example",
             "request": "launch",
             "type": "dart"
         },
         {
             "name": "data_models",
             "cwd": "packages/data_models",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "dart_client_example (CLI)",
+            "cwd": "example/dart_client_example",
+            "program": "bin/main.dart",
+            "console": "terminal",
             "request": "launch",
             "type": "dart"
         }
